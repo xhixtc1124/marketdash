@@ -1,8 +1,7 @@
 Double-click start.bat to launch. The browser will open automatically.
 
+Dependencies are installed automatically on first run.
+
 Requirements:
 - Python installed
 - Node.js installed
-- First time only, install dependencies:
-    cd backend  →  pip install -r requirements.txt
-    cd frontend →  npm install

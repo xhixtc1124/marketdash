@@ -146,5 +146,21 @@ def get_indicators(symbol: str, period: str = "6mo") -> Optional[dict]:
 
 
 def search_symbols(query: str) -> list:
-    q = query.upper()
-    return [s for s in SYMBOL_LIST if q in s["symbol"] or q in s["name"].upper()][:8]
+    try:
+        import httpx
+        r = httpx.get(
+            "https://query2.finance.yahoo.com/v1/finance/search",
+            params={"q": query, "quotesCount": 8, "newsCount": 0},
+            headers={"User-Agent": "Mozilla/5.0"},
+            timeout=5,
+        )
+        quotes = r.json().get("quotes", [])
+        return [
+            {"symbol": q["symbol"], "name": q.get("shortname") or q.get("longname") or q["symbol"]}
+            for q in quotes
+            if "symbol" in q
+        ][:8]
+    except Exception as e:
+        print(f"search error: {e}")
+        q = query.upper()
+        return [s for s in SYMBOL_LIST if q in s["symbol"] or q in s["name"].upper()][:8]

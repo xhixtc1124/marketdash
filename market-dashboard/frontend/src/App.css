@@ -116,6 +116,31 @@ body {
 }
 .watchlist-item:hover { background: #1f2937; color: #e5e7eb; }
 .watchlist-item.active { background: #1d4ed8; color: #fff; }
+.watchlist-item { display: flex; justify-content: space-between; align-items: center; }
+.watchlist-remove {
+  opacity: 0;
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1;
+  padding: 0 2px;
+}
+.watchlist-item:hover .watchlist-remove { opacity: 1; }
+.watchlist-remove:hover { color: #ef5350; }
+.watchlist-add {
+  margin-top: 8px;
+  width: 100%;
+  background: transparent;
+  border: 1px dashed #374151;
+  border-radius: 6px;
+  color: #3b82f6;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 10px;
+  text-align: left;
+  transition: all 0.15s;
+}
+.watchlist-add:hover { background: #1e3a5f; border-color: #3b82f6; }
 
 /* ── Main content ───────────────────────────────────── */
 .main {

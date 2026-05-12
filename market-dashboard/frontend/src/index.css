@@ -1,4 +1,5 @@
 *, *::before, *::after { box-sizing: border-box; }
+a[href*="tradingview"] { display: none !important; }
 
 body {
   margin: 0;

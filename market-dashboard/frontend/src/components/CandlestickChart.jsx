@@ -7,6 +7,7 @@ import {
 } from 'lightweight-charts'
 
 const CHART_OPTS = {
+  attributionLogo: false,
   layout: {
     background: { color: '#0f1117' },
     textColor: '#9ca3af',

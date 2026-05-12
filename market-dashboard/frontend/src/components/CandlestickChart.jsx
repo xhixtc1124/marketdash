@@ -74,7 +74,31 @@ export function CandlestickChart({ candles, indicators, showBB, showMA }) {
     bbLower?.setData(showBB ? indicators.bb_lower : [])
   }, [indicators, showMA, showBB])
 
-  return <div ref={containerRef} className="chart-container" />
+  return (
+    <div style={{ position: 'relative' }}>
+      <div ref={containerRef} className="chart-container" />
+      <div style={{ position: 'absolute', top: 8, left: 10, display: 'flex', gap: 12, zIndex: 10, pointerEvents: 'none' }}>
+        {showMA && (
+          <>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: '#9ca3af' }}>
+              <span style={{ display: 'inline-block', width: 16, height: 2, background: '#f59e0b', borderRadius: 2 }} />
+              SMA 20
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: '#9ca3af' }}>
+              <span style={{ display: 'inline-block', width: 16, height: 2, background: '#8b5cf6', borderRadius: 2 }} />
+              SMA 50
+            </span>
+          </>
+        )}
+        {showBB && (
+          <span style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: '#9ca3af' }}>
+            <span style={{ display: 'inline-block', width: 16, height: 2, background: '#3b82f6', borderRadius: 2, borderTop: '2px dashed #3b82f6' }} />
+            Bollinger Bands (20)
+          </span>
+        )}
+      </div>
+    </div>
+  )
 }
 
 export function RsiChart({ indicators }) {
@@ -156,7 +180,21 @@ export function MacdChart({ indicators }) {
 
   return (
     <div className="subchart">
-      <span className="subchart-label">MACD (12, 26, 9)</span>
+      <div style={{ position: 'absolute', top: 6, left: 10, display: 'flex', gap: 12, zIndex: 10, pointerEvents: 'none' }}>
+        <span style={{ fontSize: 11, fontWeight: 600, color: '#6b7280', letterSpacing: '0.4px' }}>MACD (12, 26, 9)</span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: '#9ca3af' }}>
+          <span style={{ display: 'inline-block', width: 16, height: 2, background: '#f59e0b', borderRadius: 2 }} />
+          MACD
+        </span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: '#9ca3af' }}>
+          <span style={{ display: 'inline-block', width: 16, height: 2, background: '#ef5350', borderRadius: 2 }} />
+          Signal
+        </span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: '#9ca3af' }}>
+          <span style={{ display: 'inline-block', width: 10, height: 10, background: '#26a69a', borderRadius: 2 }} />
+          Histogram
+        </span>
+      </div>
       <div ref={containerRef} />
     </div>
   )

@@ -76,23 +76,6 @@ export default function App() {
             </>
           )}
 
-          <div className="legend">
-            {showMA && (
-              <>
-                <span className="legend-item">
-                  <span className="legend-dot" style={{ background: '#f59e0b' }} /> SMA 20
-                </span>
-                <span className="legend-item">
-                  <span className="legend-dot" style={{ background: '#8b5cf6' }} /> SMA 50
-                </span>
-              </>
-            )}
-            {showBB && (
-              <span className="legend-item">
-                <span className="legend-dot" style={{ background: '#3b82f6' }} /> Bollinger Bands (20)
-              </span>
-            )}
-          </div>
         </main>
       </div>
     </div>
